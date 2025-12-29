@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GfxStore | Premium Design Assets</title>
+    <meta name="description" content="Premium graphics, UI kits, and 3D assets for modern designers.">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Khodal Graphics">
+                <span class="logo-text">Khodal_Graphics_Design</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>KHODAL <br><span>Graphics Design</span></h1>
+                <p> Premium graphics, ui kits, and 3D assets for modern designer </p>
+                <div class="hero-buttons">
+                    <a href="shop.html" class="btn btn-primary">Browse Shop <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#featured" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <!-- Placeholder for Hero Image -->
+                    <img src="assets/images/hero_image.png" alt="Design Assets Preview" id="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Trending Assets</h2>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <a href="product.html?id=1" class="product-image">
+                        <img src="assets/images/prod1.png" alt="Cyber UI Kit">
+                    </a>
+                    <div class="product-info">
+                        <span class="product-cat">UI Kits</span>
+                        <a href="product.html?id=1">
+                            <h3 class="product-title">Cyberpunk Dashboard UI</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$29.00</span>
+                            <button class="add-btn" onclick="addToCart(1)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <a href="product.html?id=2" class="product-image">
+                        <img src="assets/images/prod2.png" alt="3D Icons">
+                    </a>
+                    <div class="product-info">
+                        <span class="product-cat">3D Assets</span>
+                        <a href="product.html?id=2">
+                            <h3 class="product-title">Glasmorphism 3D Icons</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$18.00</span>
+                            <button class="add-btn" onclick="addToCart(2)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <a href="product.html?id=3" class="product-image">
+                        <img src="assets/images/prod3.png" alt="Bold Typography">
+                    </a>
+                    <div class="product-info">
+                        <span class="product-cat">Fonts</span>
+                        <a href="product.html?id=3">
+                            <h3 class="product-title">Nebula Display Font</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$24.00</span>
+                            <button class="add-btn" onclick="addToCart(3)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Values -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Why GfxStore?</h2>
+            <div class="product-grid" style="text-align: center;">
+                <div style="padding: 2rem;">
+                    <i class="fa-solid fa-layer-group"
+                        style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Premium Quality</h3>
+                    <p style="color: var(--text-secondary);">Pixel-perfect resources crafted by industry veterans.</p>
+                </div>
+                <div style="padding: 2rem;">
+                    <i class="fa-solid fa-bolt"
+                        style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Instant Access</h3>
+                    <p style="color: var(--text-secondary);">Download your assets immediately after purchase.</p>
+                </div>
+                <div style="padding: 2rem;">
+                    <i class="fa-solid fa-infinity"
+                        style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem;"></i>
+                    <h3 style="margin-bottom: 1rem;">Lifetime Updates</h3>
+                    <p style="color: var(--text-secondary);">Get all future updates for your purchased products for
+                        free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>GfxStore.</h2>
+                    <p>Empowering designers with tools that inspire. <br>Built for the future of creativity.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="#">UI Kits</a></li>
+                        <li><a href="#">3D Assets</a></li>
+                        <li><a href="#">Fonts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Follow Us</h3>
+                    <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                        <a href="#"><i class="fa-brands fa-twitter" style="font-size: 1.5rem;"></i></a>
+                        <a href="https://www.instagram.com/khodal_graphics_design?igsh=MWdrbmRjMDF2YzI5eg=="
+                            target="_blank"><i class="fa-brands fa-instagram" style="font-size: 1.5rem;"></i></a>
+                        <a href="#"><i class="fa-brands fa-dribbble" style="font-size: 1.5rem;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GfxStore Design Assets. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

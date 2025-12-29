@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | GfxStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Khodal Graphics">
+                <span class="logo-text">Khodal_Graphics_Design</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="about.html" class="nav-link active">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 150px; padding-bottom: 5rem;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1 class="section-title">KHODAL_GRAPHICS_DESIGN</h1>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 4rem;">
+                GfxStore began with a simple mission: to make high-end design resources accessible to everyone. We
+                believe that great tools inspire great work.
+            </p>
+        </div>
+
+        <div
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem;">
+            <img src="assets/images/logo.png" alt="Our Studio"
+                style="border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+            <div>
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">That Is My Logo's</h2>
+                <p>
+                    We are a collective of senior product designers, 3D artists, and creative developers who are
+                    passionate about quality.
+                </p>
+                <p style="color: var(--text-secondary);">
+                    Frustrated by the lack of cohesive, high-quality assets in the market, we decided to build our own.
+                    Every pixel you see on GfxStore is crafted with intention and precision.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <h2 class="section-title">Gallery</h2>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <!-- Image 1 -->
+                <div class="gallery-item" onclick="openLightbox(); currentSlide(1)"
+                    style="text-align: center; max-width: 300px; cursor: pointer;">
+                    <div
+                        style="width: 100%; height: 300px; background: var(--bg-card); border-radius: 20px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <img src="assets/images/gallery_1.jpg" alt="Gallery Image 1"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="gallery-item" onclick="openLightbox(); currentSlide(2)"
+                    style="text-align: center; max-width: 300px; cursor: pointer;">
+                    <div
+                        style="width: 100%; height: 300px; background: var(--bg-card); border-radius: 20px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <img src="assets/images/gallery_2.jpg" alt="Gallery Image 2"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="gallery-item" onclick="openLightbox(); currentSlide(3)"
+                    style="text-align: center; max-width: 300px; cursor: pointer;">
+                    <div
+                        style="width: 100%; height: 300px; background: var(--bg-card); border-radius: 20px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <img src="assets/images/gallery_3.jpg" alt="Gallery Image 3"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="gallery-item" onclick="openLightbox(); currentSlide(4)"
+                    style="text-align: center; max-width: 300px; cursor: pointer;">
+                    <div
+                        style="width: 100%; height: 300px; background: var(--bg-card); border-radius: 20px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <img src="assets/images/gallery_4.jpg" alt="Gallery Image 4"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="gallery-item" onclick="openLightbox(); currentSlide(5)"
+                    style="text-align: center; max-width: 300px; cursor: pointer;">
+                    <div
+                        style="width: 100%; height: 300px; background: var(--bg-card); border-radius: 20px; margin: 0 auto 1rem; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                        <img src="assets/images/gallery_5.jpg" alt="Gallery Image 5"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox">
+        <span class="close cursor" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+
+            <div class="mySlides">
+                <div class="numbertext">1 / 5</div>
+                <img src="assets/images/gallery_1.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">2 / 5</div>
+                <img src="assets/images/gallery_2.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">3 / 5</div>
+                <img src="assets/images/gallery_3.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">4 / 5</div>
+                <img src="assets/images/gallery_4.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">5 / 5</div>
+                <img src="assets/images/gallery_5.jpg" style="width:100%">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 GfxStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

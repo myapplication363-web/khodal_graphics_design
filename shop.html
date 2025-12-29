@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | GfxStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .shop-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .filter-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .filter-list a {
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filter-list a:hover,
+        .filter-list a.active {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Khodal Graphics">
+                <span class="logo-text">Khodal_Graphics_Design</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container shop-container" style="padding-top: 80px;">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3>Categories</h3>
+                <ul class="filter-list">
+                    <li><a href="#" class="active">All Assets <span>12</span></a></li>
+                    <li><a href="#">UI Kits <span>4</span></a></li>
+                    <li><a href="#">3D Icons <span>5</span></a></li>
+                    <li><a href="#">Fonts <span>3</span></a></li>
+                    <li><a href="#">Mockups <span>8</span></a></li>
+                </ul>
+            </div>
+
+            <div class="filter-section" style="margin-top: 3rem;">
+                <h3>Price Range</h3>
+                <ul class="filter-list">
+                    <li><a href="#">Free</a></li>
+                    <li><a href="#">Under $20</a></li>
+                    <li><a href="#">$20 - $50</a></li>
+                    <li><a href="#">$50+</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2rem;">All Products</h1>
+                <select
+                    style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 20px; outline: none;">
+                    <option>Sort by: Popular</option>
+                    <option>Newest</option>
+                    <option>Price: Low to High</option>
+                </select>
+            </div>
+
+            <div class="product-grid">
+                <!-- Reusing products for demo -->
+                <div class="product-card">
+                    <a href="product.html?id=1" class="product-image"><img src="assets/images/prod1.png"
+                            alt="Product"></a>
+                    <div class="product-info">
+                        <span class="product-cat">UI Kits</span>
+                        <a href="product.html?id=1">
+                            <h3 class="product-title">Cyberpunk Dashboard</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$29.00</span>
+                            <button class="add-btn" onclick="addToCart(1)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product.html?id=2" class="product-image"><img src="assets/images/prod2.png"
+                            alt="Product"></a>
+                    <div class="product-info">
+                        <span class="product-cat">3D Assets</span>
+                        <a href="product.html?id=2">
+                            <h3 class="product-title">Glasmorphism Icons</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$18.00</span>
+                            <button class="add-btn" onclick="addToCart(2)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product.html?id=3" class="product-image"><img src="assets/images/prod3.png"
+                            alt="Product"></a>
+                    <div class="product-info">
+                        <span class="product-cat">Fonts</span>
+                        <a href="product.html?id=3">
+                            <h3 class="product-title">Nebula Display</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$24.00</span>
+                            <button class="add-btn" onclick="addToCart(3)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product.html?id=4" class="product-image"><img src="assets/images/prod1.png"
+                            alt="Product"></a>
+                    <div class="product-info">
+                        <span class="product-cat">UI Kits</span>
+                        <a href="product.html?id=4">
+                            <h3 class="product-title">Mobile App Wireframe</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$15.00</span>
+                            <button class="add-btn" onclick="addToCart(4)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product.html?id=5" class="product-image"><img src="assets/images/prod2.png"
+                            alt="Product"></a>
+                    <div class="product-info">
+                        <span class="product-cat">3D Assets</span>
+                        <a href="product.html?id=5">
+                            <h3 class="product-title">Abstract Shapes Vol.2</h3>
+                        </a>
+                        <div class="product-footer">
+                            <span class="product-price">$22.00</span>
+                            <button class="add-btn" onclick="addToCart(5)"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div style="margin-top: 4rem; display: flex; justify-content: center; gap: 0.5rem;">
+                <button class="btn btn-primary" style="padding: 0.5rem 1rem;">1</button>
+                <button class="btn btn-outline" style="padding: 0.5rem 1rem;">2</button>
+                <button class="btn btn-outline" style="padding: 0.5rem 1rem;">3</button>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 GfxStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

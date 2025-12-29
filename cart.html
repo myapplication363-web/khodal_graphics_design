@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | GfxStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-container {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .cart-table th {
+            text-align: left;
+            padding: 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        .cart-item td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            color: #ef4444;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            max-width: 400px;
+            margin-left: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .summary-total {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+        }
+
+        /* Payment Section Styles */
+        .payment-options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .payment-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(223, 165, 59, 0.05);
+        }
+
+        .payment-card input[type="radio"] {
+            accent-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .payment-card.selected {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 1px var(--accent-color);
+        }
+
+        .pay-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .cart-table {
+                font-size: 0.9rem;
+            }
+
+            .item-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .cart-table th:nth-child(2),
+            .cart-table td:nth-child(2) {
+                display: none;
+                /* Hide Category on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Khodal Graphics">
+                <span class="logo-text">Khodal_Graphics_Design</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon active" onclick="window.location.href='cart.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container cart-container" style="padding-top: 80px;">
+        <h1 class="section-title"
+            style="margin-bottom: 2rem; text-align: left; transform: none; left: auto; display: block;">Your Cart</h1>
+
+        <div id="cart-content">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th width="50%">Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Items will be injected here via JS -->
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (5%)</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="goToPayment()">Proceed
+                    to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Payment Section (Hidden by default) -->
+        <div id="payment-content" style="display: none; max-width: 600px; margin: 0 auto;">
+            <div
+                style="background: var(--bg-card); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border-color);">
+                <h2 style="font-size: 1.75rem; margin-bottom: 2rem; text-align: center;">Select Payment Method</h2>
+
+                <div class="payment-options">
+                    <!-- UPI -->
+                    <label class="payment-card" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="upi">
+                        <div class="pay-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem;">UPI</div>
+                            <small style="color: var(--text-secondary);">Pay via BHIM/Any UPI App</small>
+                        </div>
+                    </label>
+
+                    <!-- PhonePe -->
+                    <label class="payment-card" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="phonepe">
+                        <div class="pay-icon" style="color: #5f259f;"><i class="fa-solid fa-wallet"></i></div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem;">PhonePe</div>
+                            <small style="color: var(--text-secondary);">Fast & Secure Payments</small>
+                        </div>
+                    </label>
+
+                    <!-- Google Pay -->
+                    <label class="payment-card" onclick="selectPayment(this)">
+                        <input type="radio" name="payment" value="gpay">
+                        <div class="pay-icon" style="color: #4285F4;"><i class="fa-brands fa-google"></i></div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem;">Google Pay</div>
+                            <small style="color: var(--text-secondary);">Pay with Google</small>
+                        </div>
+                    </label>
+                </div>
+
+                <div style="margin: 2rem 0; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 700;">
+                        <span>Total Payable:</span>
+                        <span id="pay-total-amount">$0.00</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn btn-outline" style="flex: 1;" onclick="backToCart()">Back</button>
+                    <button class="btn btn-primary" style="flex: 2;" onclick="processPayment()">Pay Now <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="empty-cart-msg" style="display: none; text-align: center; padding: 4rem;">
+            <i class="fa-solid fa-cart-arrow-down"
+                style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1.5rem;"></i>
+            <h3>Your cart is empty</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Looks like you haven't added any design assets
+                yet.</p>
+            <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Mock Data for demo purposes since we don't have a real backend
+        const productDb = {
+            1: { name: "Cyberpunk Dashboard UI", price: 29.00, img: "assets/images/prod1.png", cat: "UI Kit" },
+            2: { name: "Glasmorphism 3D Icons", price: 18.00, img: "assets/images/prod2.png", cat: "3D Assets" },
+            3: { name: "Nebula Display Font", price: 24.00, img: "assets/images/prod3.png", cat: "Fonts" },
+            4: { name: "Mobile App Wireframe", price: 15.00, img: "assets/images/prod1.png", cat: "UI Kit" },
+            5: { name: "Abstract Shapes Vol.2", price: 22.00, img: "assets/images/prod2.png", cat: "3D Assets" }
+        };
+
+        function renderCartPage() {
+            const tableBody = document.getElementById('cart-items');
+            const cartContent = document.getElementById('cart-content');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            tableBody.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartContent.style.display = 'none';
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const product = productDb[item.id] || productDb[1]; // Fallback
+                subtotal += product.price;
+
+                const tr = document.createElement('tr');
+                tr.classList.add('cart-item');
+                tr.innerHTML = `
+                    <td>
+                        <div class="item-info">
+                            <img src="${product.img}" class="item-img" alt="${product.name}">
+                            <div>
+                                <strong>${product.name}</strong>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${product.cat}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>
+                        <button class="remove-btn" onclick="removeFromCart(${index})"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            const tax = subtotal * 0.05;
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('total').textContent = '$' + total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('gfx_cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartPage();
+        }
+
+        renderCartPage();
+
+        function goToPayment() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            // Calculate total for display
+            let subtotal = 0;
+            cart.forEach(item => {
+                const product = productDb[item.id] || productDb[1];
+                subtotal += product.price;
+            });
+            const tax = subtotal * 0.05;
+            const total = subtotal + tax;
+
+            document.getElementById('pay-total-amount').textContent = '$' + total.toFixed(2);
+
+            // Switch views
+            document.getElementById('cart-content').style.display = 'none';
+            document.getElementById('payment-content').style.display = 'block';
+            document.querySelector('.section-title').textContent = 'Checkout';
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function backToCart() {
+            document.getElementById('payment-content').style.display = 'none';
+            document.getElementById('cart-content').style.display = 'block';
+            document.querySelector('.section-title').textContent = 'Your Cart';
+        }
+
+        function selectPayment(card) {
+            // Remove selected class from all
+            document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+            // Add to clicked
+            card.classList.add('selected');
+            // Check the radio inside
+            const radio = card.querySelector('input[type="radio"]');
+            radio.checked = true;
+        }
+
+        function processPayment() {
+            const selected = document.querySelector('input[name="payment"]:checked');
+            if (!selected) {
+                alert('Please select a payment method first.');
+                return;
+            }
+
+            const method = selected.value;
+            let methodName = 'UPI';
+            if (method === 'phonepe') methodName = 'PhonePe';
+            if (method === 'gpay') methodName = 'Google Pay';
+
+            if (confirm(`Proceed to pay via ${methodName}?`)) {
+                // Simulate processing
+                const btn = document.querySelector('#payment-content .btn-primary');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    alert('Payment Successful! Thank you for your order.');
+                    // Clear cart
+                    localStorage.removeItem('gfx_cart');
+                    cart = [];
+                    updateCartCount();
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | GfxStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Khodal Graphics">
+                <span class="logo-text">Khodal_Graphics_Design</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="shop.html" class="nav-link">Shop</a></li>
+                <li><a href="about.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="mobile-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 100px; padding-bottom: 5rem;">
+        <h1 class="section-title">Ask Me About For Khodal Design</h1>
+
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div>
+                <h2 style="margin-bottom: 1.5rem;">Let's Talk</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem;">
+                    Have a question about our products or need a custom license? We'd love to hear from you.
+                </p>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div>
+                        <small style="color: var(--text-secondary);">Email</small>
+                        <div style="font-weight: 600;">myapplication363@gmail.com</div>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <small style="color: var(--text-secondary);">Office</small>
+                        <div style="font-weight: 600;">Surat, Gujarat, India</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form onsubmit="event.preventDefault(); alert('Message sent!');">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" rows="5" placeholder="How can we help?"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Send Message</button>
+                <!-- Whatsapp Share/Contact -->
+                <div style="margin-top: 1rem; text-align: center;">
+                    <a href="https://wa.me/?text=Check%20out%20Khodal%20Graphics%20Design!" target="_blank"
+                        class="btn btn-outline" style="width: 100%; gap: 0.5rem; border-radius: 20px;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Share via WhatsApp
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 GfxStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
