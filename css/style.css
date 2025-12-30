@@ -695,6 +695,14 @@ footer {
     .footer-brand p {
         margin: 0 auto;
     }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .logo img {
+        width: 35px;
+    }
 }
 
 /* --- Keyframe Animations --- */
