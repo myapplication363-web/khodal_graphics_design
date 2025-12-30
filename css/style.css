@@ -3,43 +3,45 @@
 /* Switched to Outfit for a cleaner, more modern geometric sans-serif to pair with Playfair */
 
 :root {
-    /* Colors - Updated to Dark Olive & Light Sage Palette */
-    --bg-primary: #25330F;
-    /* Dark Olive Green */
-    --bg-secondary: #0f1606;
-    /* Darker Green for depth */
-    --bg-surface: rgba(255, 255, 255, 0.03);
-    /* Glass Effect Surface */
-    --bg-glass: rgba(37, 51, 15, 0.85);
-    /* Nave Glass */
-    --bg-card: rgba(255, 255, 255, 0.05);
+    /* Colors - Boho Abstract Palette derived from Background Image */
+    --bg-primary: #F7F1E1;
+    /* Light Cream Fallback */
+    --bg-secondary: #fffaf0;
+    /* Lighter Cream */
+
+    --bg-surface: rgba(255, 255, 255, 0.65);
+    /* Frosted White Glass */
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    /* Navbar Glass */
+    --bg-card: rgba(255, 255, 255, 0.75);
     /* Card Background */
 
-    /* Text Colors */
-    --text-primary: #D8D7C3;
-    /* Light Sage */
-    --text-secondary: #a3a295;
-    /* Muted Sage */
-    --text-muted: #747369;
-    /* Deep Muted */
+    /* Text Colors - High Contrast Dark */
+    --text-primary: #2D1810;
+    /* Dark Brown/Black */
+    --text-secondary: #5D4037;
+    /* Medium Brown */
+    --text-muted: #8D6E63;
+    /* Light Brown */
 
     /* Accents */
-    --accent-color: #dfa53b;
-    /* Rich Gold */
-    --accent-light: #eec578;
-    /* Light Gold */
-    --accent-glow: rgba(223, 165, 59, 0.4);
-    /* Gold Glow */
-    --error-color: #ff6b6b;
+    --accent-color: #B93038;
+    /* Deep Red from image */
+    --accent-light: #DE8855;
+    /* Terracotta/Orange */
+    --accent-teal: #6B9E90;
+    /* Teal/Green from image */
 
-    --border-color: rgba(223, 165, 59, 0.2);
-    /* Subtle Gold Border */
-    --border-hover: rgba(223, 165, 59, 0.5);
+    --accent-glow: rgba(185, 48, 56, 0.25);
+    /* Red Glow */
+    --error-color: #D32F2F;
+
+    --border-color: rgba(255, 255, 255, 0.8);
+    --border-hover: #DE8855;
 
     /* Spacing */
     --container-padding: 2rem;
     --max-width: 1300px;
-    /* Wider for modern look */
 
     /* Transitions */
     --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -48,16 +50,17 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+    background: #F0E6D2;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--text-muted);
-    border-radius: 4px;
+    background: var(--accent-light);
+    border-radius: 5px;
+    border: 2px solid #F0E6D2;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -66,7 +69,7 @@
 
 ::selection {
     background: var(--accent-color);
-    color: var(--bg-primary);
+    color: #fff;
 }
 
 * {
@@ -79,10 +82,11 @@
 
 body {
     background-color: var(--bg-primary);
-    background-image:
-        radial-gradient(circle at 15% 50%, rgba(223, 165, 59, 0.08) 0%, transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 25%);
+    background-image: url('../assets/images/background.png');
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--text-primary);
     font-family: 'Outfit', sans-serif;
     line-height: 1.7;
@@ -98,7 +102,7 @@ h6 {
     font-family: 'Playfair Display', serif;
     color: var(--text-primary);
     line-height: 1.1;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 a {
@@ -128,14 +132,15 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    /* Pill shape for boho vibe */
     font-family: 'Outfit', sans-serif;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: var(--transition-smooth);
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     gap: 0.75rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -146,9 +151,9 @@ img {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
-    color: var(--bg-primary);
+    color: #fff;
     font-weight: 700;
-    box-shadow: 0 4px 20px rgba(223, 165, 59, 0.3);
+    box-shadow: 0 4px 15px rgba(185, 48, 56, 0.3);
 }
 
 .btn-primary::before {
@@ -165,8 +170,8 @@ img {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(223, 165, 59, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(185, 48, 56, 0.4);
 }
 
 .btn-primary:hover::before {
@@ -175,14 +180,16 @@ img {
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--accent-color);
+    border: 2px solid var(--accent-color);
     color: var(--accent-color);
+    font-weight: 600;
 }
 
 .btn-outline:hover {
-    background: rgba(223, 165, 59, 0.1);
-    color: var(--accent-light);
-    border-color: var(--accent-light);
+    background: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(185, 48, 56, 0.2);
 }
 
 .section-title {
@@ -208,18 +215,17 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--bg-glass);
-    /* Darker glass */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Very subtle border */
+    background: rgba(255, 255, 255, 0.1);
+    /* Very transparent glass to show background */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
     padding: 1.25rem 0;
     transition: all 0.3s ease;
+    box-shadow: none;
+    /* Removed shadow for cleaner blend */
 }
-
-/* Scrolled state could be added here */
 
 .nav {
     display: flex;
@@ -237,7 +243,7 @@ img {
 .logo img {
     width: 45px;
     height: auto;
-    filter: drop-shadow(0 0 10px rgba(223, 165, 59, 0.2));
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .logo-text {
@@ -246,8 +252,7 @@ img {
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: 0.5px;
-    /* Gradient Text for Logo */
-    background: linear-gradient(135deg, #fff 20%, var(--accent-color) 100%);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -259,8 +264,8 @@ img {
 }
 
 .nav-link {
-    color: var(--text-secondary);
-    font-weight: 400;
+    color: var(--text-primary);
+    font-weight: 500;
     position: relative;
     font-family: 'Outfit', sans-serif;
     letter-spacing: 1px;
@@ -280,7 +285,7 @@ img {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1px;
+    height: 2px;
     background: var(--accent-color);
     transition: width 0.3s ease;
 }
@@ -315,7 +320,7 @@ img {
     top: -8px;
     right: -10px;
     background: var(--accent-color);
-    color: var(--bg-primary);
+    color: #fff;
     font-size: 0.7rem;
     width: 18px;
     height: 18px;
@@ -324,7 +329,7 @@ img {
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-toggle {
@@ -351,7 +356,8 @@ img {
     position: absolute;
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(223, 165, 59, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(185, 48, 56, 0.08) 0%, transparent 70%);
+    /* Red glow */
     filter: blur(120px);
     border-radius: 50%;
     top: -200px;
@@ -368,7 +374,7 @@ img {
 
 .hero-text h1 {
     font-size: 5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 2rem;
     color: var(--text-primary);
     line-height: 1.05;
@@ -386,12 +392,12 @@ img {
 }
 
 .hero-text p {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--text-secondary);
     margin-bottom: 3rem;
     max-width: 550px;
     line-height: 1.8;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .hero-buttons {
@@ -405,20 +411,20 @@ img {
 }
 
 .hero-card {
-    background: rgba(255, 255, 255, 0.05);
-    /* Modern Glass */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    /* Frosted Light Glass */
+    border: 2px solid rgba(255, 255, 255, 0.8);
     border-radius: 24px;
     padding: 1.5rem;
     transform: rotateY(-10deg) rotateX(5deg);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
-    box-shadow: 20px 30px 50px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    box-shadow: 20px 30px 50px rgba(185, 48, 56, 0.15);
+    backdrop-filter: blur(20px);
 }
 
 .hero-card:hover {
     transform: rotateY(0) rotateX(0);
-    box-shadow: 0 20px 60px rgba(223, 165, 59, 0.15);
+    box-shadow: 0 20px 60px rgba(185, 48, 56, 0.2);
 }
 
 .hero-card img {
@@ -438,19 +444,23 @@ img {
     gap: 2.5rem;
 }
 
+/* Updated Product Card Style */
 .product-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 20px;
     overflow: hidden;
     transition: var(--transition-smooth);
     position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
 }
 
 .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: var(--accent-color);
+    box-shadow: 0 25px 50px rgba(185, 48, 56, 0.15);
+    /* Red tinted shadow on hover */
+    border-color: var(--accent-light);
 }
 
 .product-image {
@@ -458,7 +468,8 @@ img {
     padding-top: 80%;
     /* Taller aspect ratio */
     overflow: hidden;
-    background: var(--bg-secondary);
+    background: #f8f5f2;
+    /* Light warm grey for image background */
 }
 
 .product-image img {
@@ -482,7 +493,7 @@ img {
     left: 0;
     width: 100%;
     padding: 1.5rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), transparent);
     display: flex;
     justify-content: flex-end;
     opacity: 0;
@@ -500,18 +511,19 @@ img {
 }
 
 .product-cat {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--accent-color);
-    font-weight: 600;
-    margin-bottom: 0.75rem;
+    color: var(--accent-teal);
+    /* Teal for category */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     display: block;
 }
 
 .product-title {
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
     font-family: 'Playfair Display', serif;
@@ -521,45 +533,49 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(0, 0, 0, 0.03);
 }
 
 .product-price {
     font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 700;
+    color: var(--accent-color);
     font-family: 'Outfit', sans-serif;
 }
 
 .add-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid var(--border-color);
-    background: transparent;
+    border: 2px solid var(--border-color);
+    background: #fff;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .add-btn:hover {
     background: var(--accent-color);
     border-color: var(--accent-color);
-    color: var(--bg-primary);
+    color: #fff;
     transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(185, 48, 56, 0.3);
 }
 
 /* Footer */
 footer {
-    background: var(--bg-surface);
+    background: rgba(255, 255, 255, 0.85);
+    /* Light Footer */
     padding: 6rem 0 2rem;
     margin-top: 6rem;
-    border-top: 1px solid rgba(223, 165, 59, 0.1);
+    border-top: 1px solid rgba(185, 48, 56, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .footer-content {
@@ -587,7 +603,7 @@ footer {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -606,7 +622,7 @@ footer {
     color: var(--accent-color);
     text-decoration: underline;
     text-decoration-color: var(--accent-color);
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 2px;
     text-underline-offset: 4px;
 }
 
@@ -615,7 +631,7 @@ footer {
     color: var(--text-muted);
     font-size: 0.85rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Responsive */
